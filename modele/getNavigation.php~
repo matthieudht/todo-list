@@ -1,0 +1,11 @@
+<?
+
+//recover name of lists
+$allList = $myBase->query('SELECT * FROM ListeTask ORDER BY id LIMIT 10 OFFSET 0');
+
+while ($rowFromList = $allList->fetch())
+{
+    if ($rowFromList['id'] == $id)
+    {
+	$nomList = $rowFromList['nom'];
+    }

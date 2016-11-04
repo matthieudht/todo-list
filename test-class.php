@@ -1,0 +1,41 @@
+<?php
+try
+{
+    $my_base = new PDO('mysql:host=localhost;dbname=exercice;charset=utf8', 'dehondtmatthieu', 'mD120989');
+}
+catch (Exception $error)
+{
+    die('error : '.$error);
+
+}
+
+function chargerClass($classe)
+{
+    require $classe.'.class.php';
+}
+
+spl_autoload_register('chargerClass');
+
+
+$tache1 = new Task([
+		    "contenu" => "yeah",
+		    "id_list" => 1]);
+echo 'tache cree'."\n";
+
+echo $tache1->id()."\n";
+echo 'id printed'."\n";
+
+$manager = new TaskManager($my_base);
+echo 'manager cree'."\n";
+
+$manager->addTask($tache1);
+echo 'tache ajouter'."\n";
+
+$manager->modifyTask(2, "pas fait");
+echo 'tache modifie';
+
+/*$manager->deleteTask(4);
+echo 'tache 1 efface';*/
+	   
+
+?>

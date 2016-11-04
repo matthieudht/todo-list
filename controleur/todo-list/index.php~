@@ -1,0 +1,24 @@
+<?php
+// test what page to print
+if ($_GET['liste'])
+{
+    $id = $_GET['liste'];
+}
+else $id = 1;
+
+//connexion database
+include_once("../../modele/todo-list/connexion-sql.php");
+
+
+
+//recover lists
+include_once('../../modele/todo-list/getNavigation.php');
+$lists = getNavigation();
+
+//recover tasks
+include_once('../../modele/todo-list/getTaskList.php');
+$tasks = getTaskList($id);
+
+
+//print the vue
+include_once('../../vue/todo-list/index.php');
