@@ -7,15 +7,7 @@ function chargerClass($classe)
 
 spl_autoload_register('chargerClass');
 
-try
-{
-    $myBase = new PDO('mysql:host=localhost;dbname=exercice;charset=utf8', 'dehondtmatthieu', 'mD120989');
-}
-catch (Exception $error)
-{
-    die($error->getMessage());
-}
-
+include('../connexion-sql.php');
 
 $manager = new TaskManager($myBase);
 
